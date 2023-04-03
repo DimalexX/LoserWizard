@@ -6,13 +6,12 @@ const RELOAD_PERIOD := 0.5
 onready var Shot = preload("res://Player/Shot.tscn")
 onready var sprite := $Sprite
 var dir := Vector2.ZERO
-#var vel = Vector2.ZERO
 var speed := 150.0
 var hp := 3.0
 var can_fire := true
 var reload_time := 0.0
 var plaing_animation := false
-var first_geath: bool = true
+var first_death: bool = true
 
 
 func _ready():
@@ -22,6 +21,8 @@ func _ready():
 
 func redraw_hp():
 	$hp.text = str(hp)
+	if G.hp_label:
+		G.hp_label.text = "HP:" + str(hp)
 
 
 func _process(delta):
@@ -68,9 +69,11 @@ func shot():
 
 
 func hit(dmg: float):
+	#при переносе из комнаты в комнату иногда получает удар от мертвого ворона.
+	#причем баг замечен только с левой и правой дверью. бред какой-то ..
 	hp -= dmg
 	redraw_hp()
-	print("Player HP: ", hp)
+#	print("Player HP: ", hp)
 	if hp <= 0:
 		death()
 
@@ -79,10 +82,10 @@ func death():
 	sprite.play("death")
 	plaing_animation = true
 	set_process(false)
-	if first_geath:
+	if first_death:
 		G.dialog_num = 103
 		G.dialog_timer = 0
-		first_geath = false
+		first_death = false
 	else:
 		G.dialog_num = 200
 		G.dialog_timer = 0

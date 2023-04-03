@@ -1,9 +1,12 @@
 extends KinematicBody2D
 
 
-func _ready() -> void:
-	pass
+var lifetime := 10.0
 
 
 func _process(delta: float) -> void:
-	move_and_slide(Vector2(0, -50))
+	lifetime -= delta
+	if lifetime > 0:
+		move_and_slide(Vector2(0, -50))
+	else:
+		queue_free()

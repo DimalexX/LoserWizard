@@ -141,6 +141,7 @@ frame = 4
 playing = true
 
 [node name="hp" type="Label" parent="."]
+visible = false
 margin_left = -20.0
 margin_top = -31.0
 margin_right = 20.0

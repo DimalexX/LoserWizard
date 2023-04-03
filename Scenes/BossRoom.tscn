@@ -28,5 +28,5 @@ rotation = -1.57079
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="AngryRabbit" parent="Enemies" instance=ExtResource( 2 )]
-position = Vector2( 253, 191 )
+[node name="AngryRabbit" parent="." instance=ExtResource( 2 )]
+position = Vector2( 376, 192 )

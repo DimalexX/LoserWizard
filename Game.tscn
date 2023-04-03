@@ -1,16 +1,13 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Sc01.tscn" type="PackedScene" id=1]
 [ext_resource path="res://IMG/grass.png" type="Texture" id=2]
 [ext_resource path="res://IMG/dialog.png" type="Texture" id=3]
-[ext_resource path="res://Fonts/press-start-2p.otf" type="DynamicFontData" id=4]
+[ext_resource path="res://Fonts/GameFont.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Game.gd" type="Script" id=5]
 [ext_resource path="res://Scenes/Blackscreen.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Room01.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/BossRoom.tscn" type="PackedScene" id=8]
-
-[sub_resource type="DynamicFont" id=1]
-font_data = ExtResource( 4 )
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 5 )
@@ -52,7 +49,7 @@ margin_right = 200.0
 margin_bottom = 32.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "Text Example пример текста пример текста пример текста"
 align = 1
 valign = 1
@@ -75,9 +72,43 @@ margin_right = 176.0
 margin_bottom = 46.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "Text Example пример текста пример текста пример текста"
 align = 1
 valign = 1
 autowrap = true
 uppercase = true
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 848.0
+margin_bottom = 16.0
+rect_scale = Vector2( 0.5, 0.7 )
+size_flags_horizontal = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer"]
+margin_right = 843.0
+margin_bottom = 11.0
+custom_constants/separation = 20
+
+[node name="HPLabel" type="Label" parent="CanvasLayer/MarginContainer/HBoxContainer"]
+visible = false
+margin_right = 64.0
+margin_bottom = 16.0
+size_flags_horizontal = 4
+custom_colors/font_color = Color( 1, 1, 1, 0.862745 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "HP:3"
+
+[node name="HPLabel2" type="Label" parent="CanvasLayer/MarginContainer/HBoxContainer"]
+visible = false
+margin_left = 84.0
+margin_right = 164.0
+margin_bottom = 16.0
+size_flags_horizontal = 4
+custom_colors/font_color = Color( 1, 0, 0, 0.862745 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "HP:20"

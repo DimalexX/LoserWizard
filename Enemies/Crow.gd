@@ -65,6 +65,7 @@ func _on_AnimatedSprite_animation_finished() -> void:
 
 
 func _on_AreaAtack_body_entered(body: Node) -> void:
+#	print("Hit! ", name)
 	body.hit(1)
 	sprite.play("attack")
 	plaing_animation = true

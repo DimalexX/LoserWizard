@@ -3,7 +3,7 @@ extends Area2D
 
 var speed := 300.0
 var vel := Vector2.ZERO
-var lifetime := 3.0
+var lifetime := 2.0
 
 
 func _process(delta):

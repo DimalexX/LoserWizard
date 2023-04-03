@@ -1,10 +1,10 @@
 extends KinematicBody2D
 
 
-const J_TIMER = 4
-const JT_DELTA = 1
+var J_TIMER: float = 4 #да-да .. это были константы, но пришлось вот ;)
+var JT_DELTA: float = 1
 
-onready var Ghost = preload("res://Enemies/Ghost.tscn")
+onready var Ghost := preload("res://Enemies/Ghost.tscn")
 onready var sprite := $AnimatedSprite
 
 var jump_timer: float
@@ -48,6 +48,7 @@ func hit(dmg):
 	var g = Ghost.instance()
 	g.position = position
 	G.enemies.call_deferred("add_child", g)
-	G.dialog_num = 100
-	G.dialog_timer = 0
+	if G.dialog_num < 100:
+		G.dialog_num = 100
+		G.dialog_timer = 0
 	queue_free()
