@@ -208,7 +208,7 @@ func new_room(player_pos: int, death: bool = false):
 		level = 2
 #		print(level)
 	
-	if level > 7: #boss
+	if level > 5: #boss
 		player.global_position = ppos
 		shots = bossroom.get_node("Shots")
 		enemies = bossroom.get_node("Enemies")
